@@ -1,5 +1,5 @@
 steps:
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'europe-docker.pkg.dev/${PROJECT_ID}/cicd-demo/frontend', '.']
+    args: ['build', '-t', 'europe-docker.pkg.dev/${PROJECT_ID}/cicd-demo/frontend', './cicd_demo']
 images:
   - 'europe-docker.pkg.dev/${PROJECT_ID}/cicd-demo/frontend'
