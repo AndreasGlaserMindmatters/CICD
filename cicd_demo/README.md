@@ -13,5 +13,5 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 ## Docker
 `sudo docker build -t cicd-demo-image .`
-`sudo docker run --name cicd-demo-container -d -p 8080:80 cicd-demo-image`
+`sudo docker run --name cicd-demo-container -d -p 8080:80 cicd-demo-image --rm`
 
