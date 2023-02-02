@@ -5,6 +5,6 @@ steps:
   # Deploy container image to Cloud Run
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: gcloud
-    args: ['run', 'deploy', 'cicd-demo', '--image', 'europe-docker.pkg.dev/${PROJECT_ID}/cicd-demo/frontend', '--region', 'europe-west1']
+    args: ['run', 'deploy', 'cicd-demo', '--image', 'europe-docker.pkg.dev/${PROJECT_ID}/cicd-demo/frontend', '--region', 'europe-west1', '--set-env-vars', 'PORT=80']
 images:
   - 'europe-docker.pkg.dev/${PROJECT_ID}/cicd-demo/frontend'
