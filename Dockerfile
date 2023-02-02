@@ -8,8 +8,8 @@ COPY . .
 RUN npm run build
 ### STAGE 2: Run ###
 FROM nginx:1.23.3-alpine
-ARG bla
-#ENV PORT=$bla
+ARG bla=80
+ENV PORT=$bla
 RUN echo "The PORT is $PORT"
 COPY nginx.conf /etc/nginx/config.template
 ## replace $PORT with the port from cloud run
