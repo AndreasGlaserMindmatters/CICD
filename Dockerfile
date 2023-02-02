@@ -9,9 +9,11 @@ RUN npm run build
 ### STAGE 2: Run ###
 FROM nginx:1.23.3-alpine
 ARG bla
-RUN echo "bla is $bla"
-RUN echo "The PORT is $PORT"
 ENV PORT=$bla
 RUN echo "The PORT is $PORT"
-COPY nginx.conf /etc/nginx/nginx.conf
+COPY nginx.conf /etc/nginx/config.template
+## replace $PORT with the port from cloud run
+RUN sed -n -e 5p /etc/nginx/config.template
+RUN sh -c "envsubst '\$PORT'  < /etc/nginx/config.template > /etc/nginx/nginx.conf"
+RUN sed -n -e 5p /etc/nginx/nginx.conf
 COPY --from=build /usr/src/app/dist/cicd_demo /usr/share/nginx/html
