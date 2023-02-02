@@ -17,3 +17,5 @@ RUN sed -n -e 5p /etc/nginx/config.template
 RUN sh -c "envsubst '\$PORT'  < /etc/nginx/config.template > /etc/nginx/nginx.conf"
 RUN sed -n -e 5p /etc/nginx/nginx.conf
 COPY --from=build /usr/src/app/dist/cicd_demo /usr/share/nginx/html
+EXPOSE $PORT
+CMD ["nginx", "-g", "daemon off;"]
