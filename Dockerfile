@@ -8,8 +8,10 @@ COPY . .
 RUN npm run build
 ### STAGE 2: Run ###
 FROM nginx:1.23.3-alpine
+ARG bla
+RUN echo "bla is $bla"
 RUN echo "The PORT is $PORT"
-ENV PORT=82
+ENV PORT=$bla
 RUN echo "The PORT is $PORT"
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY --from=build /usr/src/app/dist/cicd_demo /usr/share/nginx/html
